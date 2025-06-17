@@ -1,0 +1,23 @@
+{
+  "$schema": "https://developer.joomla.org/schemas/json-schema/web_assets.json",
+  "name": "mod_whichpoliceforce",
+  "version": "1.0.1",
+  "description": "Which Police Force Module Assets",
+  "license": "GPL-2.0-or-later",
+  "assets": [
+    {
+      "name": "mod_whichpoliceforce.style",
+      "type": "style",
+      "uri": "mod_whichpoliceforce/css/style.css"
+    },
+    {
+      "name": "mod_whichpoliceforce.script", 
+      "type": "script",
+      "uri": "mod_whichpoliceforce/js/script.js",
+      "attributes": {
+        "defer": true
+      },
+      "dependencies": ["core"]
+    }
+  ]
+}

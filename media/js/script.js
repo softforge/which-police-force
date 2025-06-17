@@ -7,29 +7,46 @@
 (function() {
     'use strict';
     
+    console.log('Which Police Force script loaded');
+    
     document.addEventListener('DOMContentLoaded', function() {
+        console.log('DOM loaded, checking for module config...');
+        console.log('Config available:', typeof window.whichPoliceForceConfig !== 'undefined');
+        
         // Initialize all module instances
         if (window.whichPoliceForceConfig) {
+            console.log('Found config for modules:', Object.keys(window.whichPoliceForceConfig));
             Object.keys(window.whichPoliceForceConfig).forEach(function(moduleId) {
                 initializeModule(moduleId);
             });
+        } else {
+            console.error('No whichPoliceForceConfig found!');
         }
     });
     
     function initializeModule(moduleId) {
+        console.log('Initializing Which Police Force module:', moduleId);
         const config = window.whichPoliceForceConfig[moduleId];
         const form = document.getElementById('whichpoliceforce-form-' + moduleId);
         const resultDiv = document.getElementById('whichpoliceforce-result-' + moduleId);
         const errorDiv = document.getElementById('whichpoliceforce-error-' + moduleId);
         const loadingDiv = document.getElementById('whichpoliceforce-loading-' + moduleId);
         
-        if (!form) return;
+        console.log('Config:', config);
+        console.log('Form found:', !!form);
+        
+        if (!form) {
+            console.error('Form not found for module:', moduleId);
+            return;
+        }
         
         form.addEventListener('submit', function(e) {
+            console.log('Form submitted');
             e.preventDefault();
             
             const postcodeInput = form.querySelector('.whichpoliceforce-postcode');
             const postcode = postcodeInput.value.trim();
+            console.log('Postcode entered:', postcode);
             
             if (!postcode) {
                 showError('Please enter a postcode');
