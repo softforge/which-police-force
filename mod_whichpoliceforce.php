@@ -9,15 +9,19 @@
 
 defined('_JEXEC') or die;
 
-use Joomla\CMS\Helper\ModuleHelper;
-use Joomla\Module\WhichPoliceForce\Site\Helper\WhichPoliceForceHelper;
+use Joomla\CMS\Extension\Service\Provider\Module as ModuleServiceProvider;
+use Joomla\CMS\Factory;
+use Joomla\DI\Container;
 
-// Get the helper
-require_once __DIR__ . '/helper.php';
+// Load the service provider
+$container = Factory::getContainer();
+$container->registerServiceProvider(new ModuleServiceProvider);
 
-// Get module parameters
-$showTitle = $params->get('show_title', 1);
-$apiUrl = $params->get('api_url', 'https://data.police.uk/api/locate-neighbourhood');
+// Get the module dispatcher
+$dispatcher = $container->get(Joomla\CMS\Dispatcher\ModuleDispatcherFactoryInterface::class)->createDispatcher($module, $app);
 
-// Load the default layout
-require ModuleHelper::getLayoutPath('mod_whichpoliceforce', $params->get('layout', 'default'));
+// Include the helper factory
+$dispatcher->setHelperFactory($container->get(Joomla\CMS\Helper\HelperFactoryInterface::class));
+
+// Dispatch the module
+$dispatcher->dispatch();

@@ -1,23 +1,30 @@
 <?xml version="1.0" encoding="utf-8"?>
 <extension type="module" version="5.0" client="site" method="upgrade">
     <name>MOD_WHICHPOLICEFORCE</name>
+    <namespace path="src">Joomla\Module\WhichPoliceForce</namespace>
     <author>Philip Walton</author>
     <creationDate>June 2025</creationDate>
     <copyright>Copyright (C) 2025 SoftForge. All rights reserved.</copyright>
     <license>GNU General Public License version 2 or later; see LICENSE</license>
     <authorEmail>phil@softforge.co.uk</authorEmail>
     <authorUrl>https://softforge.co.uk</authorUrl>
-    <version>1.0.0</version>
+    <version>1.0.1</version>
     <description>MOD_WHICHPOLICEFORCE_DESC</description>
     
     <files>
         <filename module="mod_whichpoliceforce">mod_whichpoliceforce.php</filename>
-        <filename>mod_whichpoliceforce_ajax.php</filename>
         <filename>helper.php</filename>
         <folder>tmpl</folder>
         <folder>language</folder>
-        <folder>assets</folder>
+        <folder>services</folder>
+        <folder>src</folder>
     </files>
+    
+    <media destination="mod_whichpoliceforce" folder="media">
+        <folder>css</folder>
+        <folder>js</folder>
+        <file>joomla.asset.json</file>
+    </media>
     
     <languages folder="language">
         <language tag="en-GB">en-GB/mod_whichpoliceforce.ini</language>

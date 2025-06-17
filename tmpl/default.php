@@ -10,13 +10,15 @@
 defined('_JEXEC') or die;
 
 use Joomla\CMS\Language\Text;
-use Joomla\CMS\HTML\HTMLHelper;
+use Joomla\CMS\Router\Route;
+use Joomla\CMS\Factory;
 
-// Load CSS
-HTMLHelper::_('stylesheet', 'mod_whichpoliceforce/style.css', ['relative' => true]);
+// Get document
+$document = Factory::getApplication()->getDocument();
 
-// Load JavaScript
-HTMLHelper::_('script', 'mod_whichpoliceforce/script.js', ['relative' => true]);
+// Add CSS and JavaScript directly
+$document->addStyleSheet('/whichpolice-test/media/mod_whichpoliceforce/css/style.css');
+$document->addScript('/whichpolice-test/media/mod_whichpoliceforce/js/script.js', [], ['defer' => true]);
 ?>
 
 <div class="mod-whichpoliceforce <?php echo $moduleclass_sfx; ?>">
@@ -72,6 +74,6 @@ HTMLHelper::_('script', 'mod_whichpoliceforce/script.js', ['relative' => true]);
     window.whichPoliceForceConfig = window.whichPoliceForceConfig || {};
     window.whichPoliceForceConfig[<?php echo $module->id; ?>] = {
         moduleId: <?php echo $module->id; ?>,
-        ajaxUrl: '<?php echo JRoute::_('index.php?option=com_ajax&module=whichpoliceforce&format=json'); ?>'
+        ajaxUrl: '<?php echo Route::_('index.php?option=com_ajax&module=whichpoliceforce&format=json'); ?>'
     };
 </script>
