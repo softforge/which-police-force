@@ -1,0 +1,45 @@
+# OS generated files
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+ehthumbs.db
+Thumbs.db
+
+# IDE files
+.idea/
+.vscode/
+*.swp
+*.swo
+*~
+
+# Logs
+*.log
+logs/
+
+# Temporary files
+*.tmp
+*.temp
+.tmp/
+
+# Backup files
+*.bak
+*.backup
+
+# Configuration files with sensitive data
+config/local.json
+config/*.local.json
+
+# Test outputs
+test-results/
+coverage/
+
+# Dependencies (if any)
+vendor/
+node_modules/
+
+# System files
+*.pid
+*.seed
+*.pid.lock
