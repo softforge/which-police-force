@@ -61,6 +61,33 @@ For the best development experience, use VS Code with Remote-SSH:
 This project is licensed under the GNU General Public License version 2 or later.
 See the [LICENSE](LICENSE) file for details.
 
+## Project Structure
+
+```
+which-police-force/
+├── mod_whichpoliceforce.xml    # Joomla manifest file
+├── mod_whichpoliceforce.php    # Module entry point
+├── mod_whichpoliceforce_ajax.php # AJAX handler
+├── helper.php                   # Business logic
+├── tmpl/
+│   └── default.php             # Frontend template
+├── assets/
+│   ├── css/
+│   │   └── style.css          # Module styles
+│   └── js/
+│       └── script.js          # Frontend JavaScript
+├── language/
+│   └── en-GB/                  # Language files
+│       ├── mod_whichpoliceforce.ini
+│       └── mod_whichpoliceforce.sys.ini
+├── scripts/                    # Development scripts
+│   ├── setup-dev.sh
+│   ├── build.sh
+│   └── test-install.sh
+└── docs/
+    └── VSCODE-SETUP.md        # VS Code setup guide
+```
+
 ## Author
 
 Philip Walton (phil@softforge.co.uk)
