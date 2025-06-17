@@ -1,0 +1,258 @@
+/**
+ * Which Police Force Module Styles
+ * @copyright   Copyright (C) 2025 SoftForge. All rights reserved.
+ * @license     GNU General Public License version 2 or later
+ */
+
+.mod-whichpoliceforce {
+    padding: 1.5rem;
+    background: #f8f9fa;
+    border-radius: 0.5rem;
+    margin-bottom: 1.5rem;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+}
+
+.mod-whichpoliceforce h3 {
+    color: #1d3557;
+    margin-bottom: 1.25rem;
+    font-size: 1.5rem;
+    font-weight: 600;
+}
+
+/* Form Styles */
+.whichpoliceforce-form {
+    margin-bottom: 1rem;
+}
+
+.whichpoliceforce-form .form-inline {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.75rem;
+    align-items: center;
+}
+
+.whichpoliceforce-form .form-group {
+    margin: 0;
+    flex: 1;
+    min-width: 200px;
+}
+
+.whichpoliceforce-postcode {
+    width: 100%;
+    text-transform: uppercase;
+    font-family: 'Courier New', monospace;
+    font-size: 1.1rem;
+    letter-spacing: 0.1em;
+    padding: 0.5rem 0.75rem;
+    border: 2px solid #dee2e6;
+    border-radius: 0.25rem;
+    transition: border-color 0.15s ease-in-out;
+}
+
+.whichpoliceforce-postcode:focus {
+    border-color: #0066cc;
+    outline: none;
+    box-shadow: 0 0 0 0.2rem rgba(0,102,204,0.25);
+}
+
+.whichpoliceforce-form button {
+    white-space: nowrap;
+    font-weight: 500;
+    padding: 0.5rem 1.5rem;
+    background-color: #0066cc;
+    border-color: #0066cc;
+    transition: all 0.15s ease-in-out;
+}
+
+.whichpoliceforce-form button:hover {
+    background-color: #0052a3;
+    border-color: #0052a3;
+    transform: translateY(-1px);
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+
+/* Result Display */
+.whichpoliceforce-result .alert {
+    margin-bottom: 0;
+    border: none;
+    border-left: 4px solid #0066cc;
+    background-color: #e8f4fd;
+    color: #1d3557;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+}
+
+.police-force-name {
+    color: #0066cc;
+    margin: 0 0 0.5rem 0;
+    font-size: 1.35rem;
+    font-weight: 600;
+}
+
+.police-force-neighbourhood {
+    color: #6c757d;
+    margin-bottom: 1rem;
+    font-size: 1rem;
+    line-height: 1.5;
+}
+
+.police-force-links {
+    display: flex;
+    gap: 1rem;
+    align-items: center;
+    flex-wrap: wrap;
+}
+
+.police-force-links .btn {
+    margin: 0;
+    font-weight: 500;
+}
+
+.police-force-links .text-muted {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-size: 0.95rem;
+}
+
+/* Loading State */
+.whichpoliceforce-loading {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.5rem 0;
+    color: #0066cc;
+}
+
+.whichpoliceforce-loading .spinner-border {
+    width: 1.25rem;
+    height: 1.25rem;
+    border-width: 2px;
+}
+
+/* Error State */
+.whichpoliceforce-error .alert {
+    margin-bottom: 0;
+    border: none;
+    border-left: 4px solid #dc3545;
+    background-color: #f8d7da;
+    color: #721c24;
+}
+
+.error-message {
+    margin: 0;
+    font-weight: 500;
+}
+
+/* Animations */
+.whichpoliceforce-result,
+.whichpoliceforce-error {
+    animation: fadeIn 0.3s ease-in-out;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(-10px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Responsive Design */
+@media (max-width: 576px) {
+    .mod-whichpoliceforce {
+        padding: 1rem;
+    }
+    
+    .whichpoliceforce-form .form-inline {
+        flex-direction: column;
+        align-items: stretch;
+        gap: 0.75rem;
+    }
+    
+    .whichpoliceforce-form .form-group {
+        min-width: 100%;
+    }
+    
+    .whichpoliceforce-postcode {
+        font-size: 1rem;
+    }
+    
+    .whichpoliceforce-form button {
+        width: 100%;
+        padding: 0.75rem;
+    }
+    
+    .police-force-links {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 0.75rem;
+    }
+    
+    .police-force-links .btn {
+        width: 100%;
+    }
+}
+
+/* Dark Mode Support */
+@media (prefers-color-scheme: dark) {
+    .mod-whichpoliceforce {
+        background: #2d3748;
+        color: #e2e8f0;
+    }
+    
+    .mod-whichpoliceforce h3 {
+        color: #e2e8f0;
+    }
+    
+    .whichpoliceforce-postcode {
+        background-color: #1a202c;
+        border-color: #4a5568;
+        color: #e2e8f0;
+    }
+    
+    .whichpoliceforce-postcode:focus {
+        border-color: #4299e1;
+        box-shadow: 0 0 0 0.2rem rgba(66,153,225,0.25);
+    }
+    
+    .whichpoliceforce-result .alert {
+        background-color: #2c5282;
+        border-color: #4299e1;
+        color: #e2e8f0;
+    }
+    
+    .police-force-name {
+        color: #90cdf4;
+    }
+    
+    .whichpoliceforce-error .alert {
+        background-color: #742a2a;
+        border-color: #fc8181;
+        color: #fed7d7;
+    }
+}
+
+/* Print Styles */
+@media print {
+    .mod-whichpoliceforce {
+        box-shadow: none;
+        border: 1px solid #dee2e6;
+    }
+    
+    .whichpoliceforce-form,
+    .whichpoliceforce-loading {
+        display: none !important;
+    }
+    
+    .whichpoliceforce-error {
+        page-break-inside: avoid;
+    }
+    
+    .whichpoliceforce-result {
+        display: block !important;
+        page-break-inside: avoid;
+    }
+}
