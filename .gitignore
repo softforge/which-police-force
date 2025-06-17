@@ -43,3 +43,9 @@ node_modules/
 *.pid
 *.seed
 *.pid.lock
+
+# Project-specific
+CLAUDE.md
+dist/
+build/
+*.zip
