@@ -30,7 +30,7 @@ cd ~/which-police-force
 ./scripts/setup-dev.sh
 
 # Access test site
-http://forge.armadillo-firefighter.ts.net/whichpolice-test/
+http://example.com/whichpolice-test/
 ```
 
 ### VS Code Remote Development
