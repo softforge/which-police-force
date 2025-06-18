@@ -36,6 +36,7 @@ class WhichPoliceForceHelper
         // Check CSRF token
         if (!Session::checkToken('get')) {
             echo new JsonResponse(null, 'Invalid Token', true);
+            Factory::getApplication()->close();
             return;
         }
         
@@ -47,6 +48,7 @@ class WhichPoliceForceHelper
         
         if (empty($postcode)) {
             echo new JsonResponse(null, 'Please provide a postcode', true);
+            Factory::getApplication()->close();
             return;
         }
         
@@ -60,6 +62,7 @@ class WhichPoliceForceHelper
             
             if ($data === false) {
                 echo new JsonResponse(null, 'Unable to find police force for this postcode', true);
+                Factory::getApplication()->close();
                 return;
             }
             
@@ -78,9 +81,11 @@ class WhichPoliceForceHelper
             ];
             
             echo new JsonResponse($response);
+            Factory::getApplication()->close();
             
         } catch (\Exception $e) {
             echo new JsonResponse(null, 'An error occurred while processing your request', true);
+            Factory::getApplication()->close();
         }
     }
     
