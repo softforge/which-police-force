@@ -53,8 +53,9 @@ class WhichPoliceForceHelper
         }
         
         try {
-            // Get module parameters (use default API URL if not in module context)
+            // Get module parameters (use default API URLs if not in module context)
             $apiUrl = 'https://data.police.uk/api/locate-neighbourhood';
+            $postcodeApiUrl = 'https://api.postcodes.io/postcodes/';
             $cacheTime = 900; // 15 minutes default
             
             // Get police force data
@@ -70,7 +71,7 @@ class WhichPoliceForceHelper
             $forceDetails = self::getForceDetails($data->force);
             
             // Get postcode details for area information
-            $postcodeDetails = self::getPostcodeData($postcode);
+            $postcodeDetails = self::getPostcodeData($postcode, $postcodeApiUrl);
             
             // Prepare response data
             $response = [
@@ -81,6 +82,8 @@ class WhichPoliceForceHelper
                 'force_url' => $forceDetails->url ?? null,
                 'force_telephone' => $forceDetails->telephone ?? null,
                 'force_description' => $forceDetails->description ?? null,
+                'latitude' => $postcodeDetails->latitude ?? null,
+                'longitude' => $postcodeDetails->longitude ?? null,
                 // Area information from postcode data
                 'area' => [
                     'district' => $postcodeDetails->admin_district ?? null,
@@ -125,7 +128,7 @@ class WhichPoliceForceHelper
         // Try to get from cache or fetch new
         $data = $cache->get(
             function($postcode, $apiUrl) {
-                return self::fetchPoliceForceData($postcode, $apiUrl);
+                return self::fetchPoliceForceData($postcode, $apiUrl, 'https://api.postcodes.io/postcodes/');
             },
             array($postcode, $apiUrl),
             'whichpoliceforce_' . $postcode
@@ -139,14 +142,15 @@ class WhichPoliceForceHelper
      *
      * @param   string  $postcode  The postcode
      * @param   string  $apiUrl    The API URL
+     * @param   string  $postcodeApiUrl The postcode API URL
      *
      * @return  object|false
      */
-    private static function fetchPoliceForceData($postcode, $apiUrl)
+    private static function fetchPoliceForceData($postcode, $apiUrl, $postcodeApiUrl = 'https://api.postcodes.io/postcodes/')
     {
         try {
             // First get lat/lng from postcode
-            $postcodeData = self::getPostcodeData($postcode);
+            $postcodeData = self::getPostcodeData($postcode, $postcodeApiUrl);
             
             if (!$postcodeData) {
                 return false;
@@ -183,14 +187,15 @@ class WhichPoliceForceHelper
      * Get postcode data including lat/lng
      *
      * @param   string  $postcode  The postcode
+     * @param   string  $postcodeApiUrl The postcode API URL
      *
      * @return  object|false
      */
-    private static function getPostcodeData($postcode)
+    private static function getPostcodeData($postcode, $postcodeApiUrl = 'https://api.postcodes.io/postcodes/')
     {
         try {
             $http = HttpFactory::getHttp();
-            $url = 'https://api.postcodes.io/postcodes/' . $postcode;
+            $url = rtrim($postcodeApiUrl, '/') . '/' . $postcode;
             
             $response = $http->get($url);
             

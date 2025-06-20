@@ -7,9 +7,20 @@
 (function() {
     'use strict';
     
+    // Mark that the script is loaded
+    window.whichPoliceForceScriptLoaded = true;
+    
     console.log('Which Police Force script loaded');
     
-    document.addEventListener('DOMContentLoaded', function() {
+    // Also check if DOM is already loaded (in case script loads after DOMContentLoaded)
+    if (document.readyState === 'loading') {
+        document.addEventListener('DOMContentLoaded', initializeModules);
+    } else {
+        // DOM is already loaded
+        initializeModules();
+    }
+    
+    function initializeModules() {
         console.log('DOM loaded, checking for module config...');
         console.log('Config available:', typeof window.whichPoliceForceConfig !== 'undefined');
         
@@ -22,7 +33,7 @@
         } else {
             console.error('No whichPoliceForceConfig found!');
         }
-    });
+    }
     
     function initializeModule(moduleId) {
         console.log('Initializing Which Police Force module:', moduleId);
@@ -132,15 +143,19 @@
                 const parts = [];
                 
                 if (config.showPostcode && data.postcode) {
-                    parts.push('Postcode ' + data.postcode);
+                    parts.push('Postcode: ' + data.postcode);
                 }
                 
                 if (config.showNeighbourhood && data.neighbourhood) {
                     parts.push('Neighbourhood: ' + data.neighbourhood);
                 }
                 
+                if (config.showCoordinates && data.latitude && data.longitude) {
+                    parts.push('Coordinates: ' + data.latitude.toFixed(6) + ', ' + data.longitude.toFixed(6));
+                }
+                
                 if (parts.length > 0) {
-                    neighbourhoodEl.textContent = parts.join(' - ');
+                    neighbourhoodEl.textContent = parts.join(' • ');
                     neighbourhoodEl.style.display = 'block';
                 } else {
                     neighbourhoodEl.style.display = 'none';
@@ -151,25 +166,25 @@
             if (areaEl) {
                 areaEl.innerHTML = '';
                 
-                if (config.showAreaDetails && data.area) {
+                if (data.area) {
                     const areaItems = [];
                     
-                    if (data.area.district) {
+                    if (config.showDistrict && data.area.district) {
                         areaItems.push('District: ' + data.area.district);
                     }
-                    if (data.area.ward) {
+                    if (config.showWard && data.area.ward) {
                         areaItems.push('Ward: ' + data.area.ward);
                     }
-                    if (data.area.parish) {
+                    if (config.showParish && data.area.parish) {
                         areaItems.push('Parish: ' + data.area.parish);
                     }
-                    if (data.area.constituency) {
+                    if (config.showConstituency && data.area.constituency) {
                         areaItems.push('Constituency: ' + data.area.constituency);
                     }
-                    if (data.area.region) {
+                    if (config.showRegion && data.area.region) {
                         areaItems.push('Region: ' + data.area.region);
                     }
-                    if (data.area.country) {
+                    if (config.showCountry && data.area.country) {
                         areaItems.push('Country: ' + data.area.country);
                     }
                     

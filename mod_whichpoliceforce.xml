@@ -8,7 +8,7 @@
     <license>GNU General Public License version 2 or later; see LICENSE</license>
     <authorEmail>phil@softforge.co.uk</authorEmail>
     <authorUrl>https://softforge.co.uk</authorUrl>
-    <version>1.2.0</version>
+    <version>1.4.0</version>
     <description>MOD_WHICHPOLICEFORCE_DESC</description>
     
     <files>
@@ -40,6 +40,15 @@
                     label="MOD_WHICHPOLICEFORCE_API_URL_LABEL"
                     description="MOD_WHICHPOLICEFORCE_API_URL_DESC"
                     default="https://data.police.uk/api/locate-neighbourhood"
+                    size="50"
+                />
+                
+                <field
+                    name="postcode_api_url"
+                    type="text"
+                    label="MOD_WHICHPOLICEFORCE_POSTCODE_API_URL_LABEL"
+                    description="MOD_WHICHPOLICEFORCE_POSTCODE_API_URL_DESC"
+                    default="https://api.postcodes.io/postcodes/"
                     size="50"
                 />
                 
@@ -77,11 +86,77 @@
                 </field>
                 
                 <field
-                    name="show_area_details"
+                    name="show_district"
                     type="radio"
-                    label="MOD_WHICHPOLICEFORCE_SHOW_AREA_DETAILS_LABEL"
-                    description="MOD_WHICHPOLICEFORCE_SHOW_AREA_DETAILS_DESC"
+                    label="MOD_WHICHPOLICEFORCE_SHOW_DISTRICT_LABEL"
+                    description="MOD_WHICHPOLICEFORCE_SHOW_DISTRICT_DESC"
                     default="1"
+                    class="btn-group btn-group-yesno">
+                    <option value="1">JYES</option>
+                    <option value="0">JNO</option>
+                </field>
+                
+                <field
+                    name="show_ward"
+                    type="radio"
+                    label="MOD_WHICHPOLICEFORCE_SHOW_WARD_LABEL"
+                    description="MOD_WHICHPOLICEFORCE_SHOW_WARD_DESC"
+                    default="1"
+                    class="btn-group btn-group-yesno">
+                    <option value="1">JYES</option>
+                    <option value="0">JNO</option>
+                </field>
+                
+                <field
+                    name="show_parish"
+                    type="radio"
+                    label="MOD_WHICHPOLICEFORCE_SHOW_PARISH_LABEL"
+                    description="MOD_WHICHPOLICEFORCE_SHOW_PARISH_DESC"
+                    default="1"
+                    class="btn-group btn-group-yesno">
+                    <option value="1">JYES</option>
+                    <option value="0">JNO</option>
+                </field>
+                
+                <field
+                    name="show_constituency"
+                    type="radio"
+                    label="MOD_WHICHPOLICEFORCE_SHOW_CONSTITUENCY_LABEL"
+                    description="MOD_WHICHPOLICEFORCE_SHOW_CONSTITUENCY_DESC"
+                    default="1"
+                    class="btn-group btn-group-yesno">
+                    <option value="1">JYES</option>
+                    <option value="0">JNO</option>
+                </field>
+                
+                <field
+                    name="show_region"
+                    type="radio"
+                    label="MOD_WHICHPOLICEFORCE_SHOW_REGION_LABEL"
+                    description="MOD_WHICHPOLICEFORCE_SHOW_REGION_DESC"
+                    default="1"
+                    class="btn-group btn-group-yesno">
+                    <option value="1">JYES</option>
+                    <option value="0">JNO</option>
+                </field>
+                
+                <field
+                    name="show_country"
+                    type="radio"
+                    label="MOD_WHICHPOLICEFORCE_SHOW_COUNTRY_LABEL"
+                    description="MOD_WHICHPOLICEFORCE_SHOW_COUNTRY_DESC"
+                    default="1"
+                    class="btn-group btn-group-yesno">
+                    <option value="1">JYES</option>
+                    <option value="0">JNO</option>
+                </field>
+                
+                <field
+                    name="show_coordinates"
+                    type="radio"
+                    label="MOD_WHICHPOLICEFORCE_SHOW_COORDINATES_LABEL"
+                    description="MOD_WHICHPOLICEFORCE_SHOW_COORDINATES_DESC"
+                    default="0"
                     class="btn-group btn-group-yesno">
                     <option value="1">JYES</option>
                     <option value="0">JNO</option>
