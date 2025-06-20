@@ -101,7 +101,7 @@
             if (neighbourhoodEl) {
                 let neighbourhoodText = 'Neighbourhood: ' + (data.neighbourhood || 'Unknown');
                 if (data.postcode) {
-                    neighbourhoodText = 'Postcode ' + data.postcode + ' - ' + neighbourhoodText;
+                    neighbourhoodText = 'Postcode ' + data.postcode.toUpperCase() + ' - ' + neighbourhoodText;
                 }
                 neighbourhoodEl.textContent = neighbourhoodText;
             }
@@ -154,10 +154,11 @@
                 
                 // Add telephone if available
                 if (data.force_telephone) {
-                    const telEl = document.createElement('span');
-                    telEl.className = 'text-muted';
-                    telEl.innerHTML = '<i class="fas fa-phone"></i> ' + data.force_telephone;
-                    linksEl.appendChild(telEl);
+                    const telLink = document.createElement('a');
+                    telLink.href = 'tel:' + data.force_telephone.replace(/\s/g, '');
+                    telLink.className = 'text-muted text-decoration-none';
+                    telLink.innerHTML = '<i class="fas fa-phone"></i> ' + data.force_telephone;
+                    linksEl.appendChild(telLink);
                 }
             }
             
