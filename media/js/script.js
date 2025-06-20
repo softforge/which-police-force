@@ -91,6 +91,7 @@
         function showResult(data) {
             const nameEl = resultDiv.querySelector('.police-force-name');
             const neighbourhoodEl = resultDiv.querySelector('.police-force-neighbourhood');
+            const areaEl = resultDiv.querySelector('.police-force-area');
             const linksEl = resultDiv.querySelector('.police-force-links');
             
             if (nameEl) {
@@ -103,6 +104,38 @@
                     neighbourhoodText = 'Postcode ' + data.postcode + ' - ' + neighbourhoodText;
                 }
                 neighbourhoodEl.textContent = neighbourhoodText;
+            }
+            
+            // Display area information if available
+            if (areaEl && data.area) {
+                areaEl.innerHTML = '';
+                const areaItems = [];
+                
+                if (data.area.district) {
+                    areaItems.push('District: ' + data.area.district);
+                }
+                if (data.area.ward) {
+                    areaItems.push('Ward: ' + data.area.ward);
+                }
+                if (data.area.parish) {
+                    areaItems.push('Parish: ' + data.area.parish);
+                }
+                if (data.area.constituency) {
+                    areaItems.push('Constituency: ' + data.area.constituency);
+                }
+                if (data.area.region) {
+                    areaItems.push('Region: ' + data.area.region);
+                }
+                if (data.area.country) {
+                    areaItems.push('Country: ' + data.area.country);
+                }
+                
+                if (areaItems.length > 0) {
+                    const areaP = document.createElement('p');
+                    areaP.className = 'mb-2';
+                    areaP.innerHTML = areaItems.join(' • ');
+                    areaEl.appendChild(areaP);
+                }
             }
             
             if (linksEl) {
@@ -121,10 +154,12 @@
                 
                 // Add telephone if available
                 if (data.force_telephone) {
-                    const telEl = document.createElement('span');
-                    telEl.className = 'text-muted';
-                    telEl.innerHTML = '<i class="fas fa-phone"></i> ' + data.force_telephone;
-                    linksEl.appendChild(telEl);
+                    const telLink = document.createElement('a');
+                    telLink.href = 'tel:' + data.force_telephone.replace(/\s/g, '');
+                    telLink.className = 'text-decoration-none';
+                    telLink.innerHTML = '<i class="fas fa-phone"></i> ' + data.force_telephone;
+                    telLink.title = 'Click to call';
+                    linksEl.appendChild(telLink);
                 }
             }
             

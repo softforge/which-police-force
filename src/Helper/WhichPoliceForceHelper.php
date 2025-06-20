@@ -69,15 +69,27 @@ class WhichPoliceForceHelper
             // Get force details
             $forceDetails = self::getForceDetails($data->force);
             
+            // Get postcode details for area information
+            $postcodeDetails = self::getPostcodeData($postcode);
+            
             // Prepare response data
             $response = [
-                'postcode' => $postcode,
+                'postcode' => strtoupper($postcode),
                 'force' => $data->force ?? 'Unknown',
                 'neighbourhood' => $data->neighbourhood ?? 'Unknown',
                 'force_name' => $forceDetails->name ?? $data->force ?? 'Unknown Police Force',
                 'force_url' => $forceDetails->url ?? null,
                 'force_telephone' => $forceDetails->telephone ?? null,
-                'force_description' => $forceDetails->description ?? null
+                'force_description' => $forceDetails->description ?? null,
+                // Area information from postcode data
+                'area' => [
+                    'district' => $postcodeDetails->admin_district ?? null,
+                    'ward' => $postcodeDetails->admin_ward ?? null,
+                    'parish' => $postcodeDetails->parish ?? null,
+                    'constituency' => $postcodeDetails->parliamentary_constituency ?? null,
+                    'region' => $postcodeDetails->region ?? null,
+                    'country' => $postcodeDetails->country ?? null
+                ]
             ];
             
             echo new JsonResponse($response);
