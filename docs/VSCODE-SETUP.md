@@ -38,7 +38,7 @@ Download and install VS Code from: https://code.visualstudio.com/
 ### 5. Open Project Folder
 
 1. Once connected, click "Open Folder"
-2. Navigate to: `/home/phil/which-police-force`
+2. Navigate to: `/home/phil/repos/extensions/modules/which-police-force`
 3. Click "OK"
 4. Trust the authors if prompted
 
@@ -106,7 +106,7 @@ which-police-force/
 If you prefer command-line editing:
 ```bash
 ssh phil@forge.armadillo-firefighter.ts.net
-cd ~/which-police-force
+cd ~/repos/extensions/modules/which-police-force
 vim mod_whichpoliceforce.php
 ```
 

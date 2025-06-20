@@ -28,7 +28,7 @@ A Joomla 5 module that allows users to find which UK police force covers their a
 ### Quick Start
 ```bash
 # Set up development environment
-cd ~/which-police-force
+cd ~/repos/extensions/modules/which-police-force
 ./scripts/setup-dev.sh
 
 # Access test site

@@ -13,7 +13,7 @@ fi
 
 # Create/update symlink
 echo "Creating development symlink..."
-sudo ln -sfn /home/phil/which-police-force /home/phil/sites/whichpolice-test/modules/mod_whichpoliceforce
+sudo ln -sfn /home/phil/repos/extensions/modules/which-police-force /home/phil/sites/whichpolice-test/modules/mod_whichpoliceforce
 
 # Check if successful
 if [ -L "/home/phil/sites/whichpolice-test/modules/mod_whichpoliceforce" ]; then
@@ -23,7 +23,7 @@ if [ -L "/home/phil/sites/whichpolice-test/modules/mod_whichpoliceforce" ]; then
     echo "Access your test site at:"
     echo "http://forge.armadillo-firefighter.ts.net/whichpolice-test/"
     echo ""
-    echo "Any changes to files in /home/phil/which-police-force will appear immediately in Joomla."
+    echo "Any changes to files in /home/phil/repos/extensions/modules/which-police-force will appear immediately in Joomla."
 else
     echo "✗ Failed to create symlink"
     exit 1
