@@ -13,13 +13,15 @@ use Joomla\CMS\Language\Text;
 use Joomla\CMS\Router\Route;
 use Joomla\CMS\Factory;
 
-// Get document and web asset manager
-$document = Factory::getApplication()->getDocument();
-$wa = $document->getWebAssetManager();
+// Get Web Asset Manager
+$wa = Factory::getApplication()->getDocument()->getWebAssetManager();
 
-// Add CSS and JavaScript using Joomla's media path
-$wa->registerAndUseStyle('mod_whichpoliceforce.style', 'mod_whichpoliceforce/css/style.css');
-$wa->registerAndUseScript('mod_whichpoliceforce.script', 'mod_whichpoliceforce/js/script.js', [], ['defer' => true]);
+// Register the asset definition file
+$wa->getRegistry()->addRegistryFile('media/mod_whichpoliceforce/joomla.asset.json');
+
+// Use the registered assets
+$wa->useStyle('mod_whichpoliceforce.style');
+$wa->useScript('mod_whichpoliceforce.script');
 ?>
 
 <div class="mod-whichpoliceforce <?php echo $moduleclass_sfx; ?>">
