@@ -74,7 +74,7 @@ class WhichPoliceForceHelper
             
             // Prepare response data
             $response = [
-                'postcode' => $postcode,
+                'postcode' => strtoupper($postcode),
                 'force' => $data->force ?? 'Unknown',
                 'neighbourhood' => $data->neighbourhood ?? 'Unknown',
                 'force_name' => $forceDetails->name ?? $data->force ?? 'Unknown Police Force',

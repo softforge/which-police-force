@@ -101,7 +101,7 @@
             if (neighbourhoodEl) {
                 let neighbourhoodText = 'Neighbourhood: ' + (data.neighbourhood || 'Unknown');
                 if (data.postcode) {
-                    neighbourhoodText = 'Postcode ' + data.postcode.toUpperCase() + ' - ' + neighbourhoodText;
+                    neighbourhoodText = 'Postcode ' + data.postcode + ' - ' + neighbourhoodText;
                 }
                 neighbourhoodEl.textContent = neighbourhoodText;
             }
