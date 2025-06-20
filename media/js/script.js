@@ -43,6 +43,7 @@
         form.addEventListener('submit', function(e) {
             console.log('Form submitted');
             e.preventDefault();
+            console.log('Config:', config);
             
             const postcodeInput = form.querySelector('.whichpoliceforce-postcode');
             const postcode = postcodeInput.value.trim();

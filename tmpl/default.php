@@ -13,6 +13,15 @@ use Joomla\CMS\Language\Text;
 use Joomla\CMS\Router\Route;
 use Joomla\CMS\Factory;
 
+// Extract dispatcher data
+extract($displayData);
+
+// Debug - uncomment to see available variables
+// echo '<pre>'; print_r($displayData); echo '</pre>';
+
+// Ensure variables have defaults
+$moduleclass_sfx = $moduleclass_sfx ?? '';
+
 // Get document and Web Asset Manager
 $document = Factory::getApplication()->getDocument();
 $wa = $document->getWebAssetManager();
