@@ -52,6 +52,7 @@ $document->addScript('/whichpolice-test/media/mod_whichpoliceforce/js/script.js'
         <div class="alert alert-info">
             <h4 class="police-force-name"></h4>
             <p class="police-force-neighbourhood"></p>
+            <div class="police-force-area"></div>
             <div class="police-force-links"></div>
         </div>
     </div>
