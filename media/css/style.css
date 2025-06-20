@@ -51,6 +51,10 @@
 .police-force-name {
     margin: 0 0 0.5rem 0;
     font-size: 1.25rem;
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 0.5rem;
 }
 
 .police-force-neighbourhood {

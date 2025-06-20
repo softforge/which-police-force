@@ -94,73 +94,101 @@
             const areaEl = resultDiv.querySelector('.police-force-area');
             const linksEl = resultDiv.querySelector('.police-force-links');
             
+            // Line 1: Police Force Name with inline website and phone
             if (nameEl) {
-                nameEl.textContent = data.force_name || data.force || 'Unknown Force';
-            }
-            
-            if (neighbourhoodEl) {
-                let neighbourhoodText = 'Neighbourhood: ' + (data.neighbourhood || 'Unknown');
-                if (data.postcode) {
-                    neighbourhoodText = 'Postcode ' + data.postcode + ' - ' + neighbourhoodText;
-                }
-                neighbourhoodEl.textContent = neighbourhoodText;
-            }
-            
-            // Display area information if available
-            if (areaEl && data.area) {
-                areaEl.innerHTML = '';
-                const areaItems = [];
+                nameEl.innerHTML = '';
                 
-                if (data.area.district) {
-                    areaItems.push('District: ' + data.area.district);
-                }
-                if (data.area.ward) {
-                    areaItems.push('Ward: ' + data.area.ward);
-                }
-                if (data.area.parish) {
-                    areaItems.push('Parish: ' + data.area.parish);
-                }
-                if (data.area.constituency) {
-                    areaItems.push('Constituency: ' + data.area.constituency);
-                }
-                if (data.area.region) {
-                    areaItems.push('Region: ' + data.area.region);
-                }
-                if (data.area.country) {
-                    areaItems.push('Country: ' + data.area.country);
-                }
+                // Force name
+                const nameSpan = document.createElement('span');
+                nameSpan.textContent = data.force_name || data.force || 'Unknown Force';
+                nameEl.appendChild(nameSpan);
                 
-                if (areaItems.length > 0) {
-                    const areaP = document.createElement('p');
-                    areaP.className = 'mb-2';
-                    areaP.innerHTML = areaItems.join(' • ');
-                    areaEl.appendChild(areaP);
-                }
-            }
-            
-            if (linksEl) {
-                linksEl.innerHTML = '';
-                
-                // Add website link if available
-                if (data.force_url) {
+                // Add website link inline if available and enabled
+                if (config.showWebsite && data.force_url) {
                     const link = document.createElement('a');
                     link.href = data.force_url;
                     link.target = '_blank';
                     link.rel = 'noopener noreferrer';
-                    link.textContent = 'Visit Police Force Website';
-                    link.className = 'btn btn-sm btn-outline-primary me-2';
-                    linksEl.appendChild(link);
+                    link.textContent = 'Website';
+                    link.className = 'btn btn-sm btn-outline-primary ms-3';
+                    nameEl.appendChild(link);
                 }
                 
-                // Add telephone if available
-                if (data.force_telephone) {
+                // Add telephone inline if available and enabled
+                if (config.showPhone && data.force_telephone) {
                     const telLink = document.createElement('a');
                     telLink.href = 'tel:' + data.force_telephone.replace(/\s/g, '');
-                    telLink.className = 'text-decoration-none';
+                    telLink.className = 'ms-3 text-decoration-none';
                     telLink.innerHTML = '<i class="fas fa-phone"></i> ' + data.force_telephone;
                     telLink.title = 'Click to call';
-                    linksEl.appendChild(telLink);
+                    nameEl.appendChild(telLink);
                 }
+            }
+            
+            // Line 2: Postcode and Neighbourhood
+            if (neighbourhoodEl) {
+                neighbourhoodEl.innerHTML = '';
+                const parts = [];
+                
+                if (config.showPostcode && data.postcode) {
+                    parts.push('Postcode ' + data.postcode);
+                }
+                
+                if (config.showNeighbourhood && data.neighbourhood) {
+                    parts.push('Neighbourhood: ' + data.neighbourhood);
+                }
+                
+                if (parts.length > 0) {
+                    neighbourhoodEl.textContent = parts.join(' - ');
+                    neighbourhoodEl.style.display = 'block';
+                } else {
+                    neighbourhoodEl.style.display = 'none';
+                }
+            }
+            
+            // Line 3: Area details
+            if (areaEl) {
+                areaEl.innerHTML = '';
+                
+                if (config.showAreaDetails && data.area) {
+                    const areaItems = [];
+                    
+                    if (data.area.district) {
+                        areaItems.push('District: ' + data.area.district);
+                    }
+                    if (data.area.ward) {
+                        areaItems.push('Ward: ' + data.area.ward);
+                    }
+                    if (data.area.parish) {
+                        areaItems.push('Parish: ' + data.area.parish);
+                    }
+                    if (data.area.constituency) {
+                        areaItems.push('Constituency: ' + data.area.constituency);
+                    }
+                    if (data.area.region) {
+                        areaItems.push('Region: ' + data.area.region);
+                    }
+                    if (data.area.country) {
+                        areaItems.push('Country: ' + data.area.country);
+                    }
+                    
+                    if (areaItems.length > 0) {
+                        const areaP = document.createElement('p');
+                        areaP.className = 'mb-0';
+                        areaP.innerHTML = areaItems.join(' • ');
+                        areaEl.appendChild(areaP);
+                        areaEl.style.display = 'block';
+                    } else {
+                        areaEl.style.display = 'none';
+                    }
+                } else {
+                    areaEl.style.display = 'none';
+                }
+            }
+            
+            // Hide the old links container since we moved everything inline
+            if (linksEl) {
+                linksEl.style.display = 'none';
             }
             
             resultDiv.style.display = 'block';

@@ -79,7 +79,12 @@ $wa->useScript('mod_whichpoliceforce.script');
     window.whichPoliceForceConfig = window.whichPoliceForceConfig || {};
     window.whichPoliceForceConfig[<?php echo $module->id; ?>] = {
         moduleId: <?php echo $module->id; ?>,
-        ajaxUrl: '<?php echo Route::_('index.php?option=com_ajax&module=whichpoliceforce&format=json', false); ?>'
+        ajaxUrl: '<?php echo Route::_('index.php?option=com_ajax&module=whichpoliceforce&format=json', false); ?>',
+        showPostcode: <?php echo $showPostcode ? 'true' : 'false'; ?>,
+        showNeighbourhood: <?php echo $showNeighbourhood ? 'true' : 'false'; ?>,
+        showAreaDetails: <?php echo $showAreaDetails ? 'true' : 'false'; ?>,
+        showWebsite: <?php echo $showWebsite ? 'true' : 'false'; ?>,
+        showPhone: <?php echo $showPhone ? 'true' : 'false'; ?>
     };
     
 </script>

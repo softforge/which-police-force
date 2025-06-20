@@ -5,6 +5,23 @@ All notable changes to the Which Police Force module will be documented in this 
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [1.2.0] - 2025-06-20
+
+### Added
+- Module parameters to control display of individual elements:
+  - Show/hide postcode
+  - Show/hide neighbourhood
+  - Show/hide area details (district, ward, parish, etc.)
+  - Show/hide website link
+  - Show/hide phone number
+- Reorganized layout with police force name, website, and phone on same line
+- More compact and cleaner display format
+
+### Changed
+- Moved website button and phone number to same line as police force name
+- Area details now on separate line for better readability
+- Elements only display when enabled in module configuration
+
 ## [1.1.0] - 2025-06-20
 
 ### Added

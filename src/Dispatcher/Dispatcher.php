@@ -37,6 +37,13 @@ class Dispatcher extends AbstractModuleDispatcher implements HelperFactoryAwareI
 
         $data['showTitle'] = $data['params']->get('show_title', 1);
         $data['apiUrl'] = $data['params']->get('api_url', 'https://data.police.uk/api/locate-neighbourhood');
+        
+        // Display options
+        $data['showPostcode'] = $data['params']->get('show_postcode', 1);
+        $data['showNeighbourhood'] = $data['params']->get('show_neighbourhood', 1);
+        $data['showAreaDetails'] = $data['params']->get('show_area_details', 1);
+        $data['showWebsite'] = $data['params']->get('show_website', 1);
+        $data['showPhone'] = $data['params']->get('show_phone', 1);
 
         return $data;
     }
