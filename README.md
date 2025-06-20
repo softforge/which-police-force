@@ -7,14 +7,16 @@ A Joomla 5 module that allows users to find which UK police force covers their a
 ### Features
 - 🔍 **Postcode Lookup**: Enter any UK postcode to find the responsible police force
 - 🌐 **Live API Integration**: Uses UK Police API and Postcodes.io for accurate data
+- 📍 **Location Details**: Displays area information including district, ward, parish, constituency, region and country
 - ⚡ **AJAX Interface**: Smooth user experience without page reloads
 - 💾 **Intelligent Caching**: Reduces API calls and improves performance
 - 📱 **Responsive Design**: Works perfectly on all devices
+- 🎨 **Template-Agnostic Styling**: Minimal CSS that adapts to any Joomla template
 - 🌍 **Multilingual Ready**: Full language string support for translations
 
 ## Installation
 
-1. Download the module package: `mod_whichpoliceforce_v1.0.0.zip`
+1. Download the module package: `mod_whichpoliceforce_v1.1.0.zip`
 2. In Joomla Administrator, go to **System → Install → Extensions**
 3. Upload and install the package
 4. Go to **Content → Site Modules**
@@ -52,8 +54,9 @@ For the best development experience, use VS Code with Remote-SSH:
 - **Cache Time**: How long to cache API results (default: 15 minutes)
 
 ### Styling
-- Module uses Bootstrap classes
-- Custom CSS in `assets/css/style.css`
+- Module uses minimal, template-agnostic CSS
+- Relies on template's Bootstrap/framework classes
+- Custom CSS in `media/css/style.css` provides only structural styles
 - Responsive design included
 
 ## License
