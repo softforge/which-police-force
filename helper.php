@@ -15,7 +15,7 @@ defined('_JEXEC') or die;
  * @since  1.0.0
  * @deprecated  2.0  Use the namespaced helper instead
  */
-class ModWhichpoliceforceHelper
+class ModWhichPoliceForceHelper
 {
     /**
      * Ajax entry point for com_ajax

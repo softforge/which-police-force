@@ -13,8 +13,9 @@ use Joomla\CMS\Language\Text;
 use Joomla\CMS\Router\Route;
 use Joomla\CMS\Factory;
 
-// Get Web Asset Manager
-$wa = Factory::getApplication()->getDocument()->getWebAssetManager();
+// Get document and Web Asset Manager
+$document = Factory::getApplication()->getDocument();
+$wa = $document->getWebAssetManager();
 
 // Register the asset definition file
 $wa->getRegistry()->addRegistryFile('media/mod_whichpoliceforce/joomla.asset.json');
@@ -78,6 +79,7 @@ $wa->useScript('mod_whichpoliceforce.script');
     window.whichPoliceForceConfig = window.whichPoliceForceConfig || {};
     window.whichPoliceForceConfig[<?php echo $module->id; ?>] = {
         moduleId: <?php echo $module->id; ?>,
-        ajaxUrl: '<?php echo Route::_('index.php?option=com_ajax&module=whichpoliceforce&format=json'); ?>'
+        ajaxUrl: '<?php echo Route::_('index.php?option=com_ajax&module=whichpoliceforce&format=json', false); ?>'
     };
+    
 </script>
