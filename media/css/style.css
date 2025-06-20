@@ -72,6 +72,14 @@
     margin: 0;
 }
 
+.police-force-links a[href^="tel:"] {
+    cursor: pointer;
+}
+
+.police-force-links a[href^="tel:"]:hover {
+    text-decoration: underline !important;
+}
+
 /* Loading State */
 .whichpoliceforce-loading {
     display: inline-flex;

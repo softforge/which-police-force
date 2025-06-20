@@ -156,8 +156,9 @@
                 if (data.force_telephone) {
                     const telLink = document.createElement('a');
                     telLink.href = 'tel:' + data.force_telephone.replace(/\s/g, '');
-                    telLink.className = 'text-muted text-decoration-none';
+                    telLink.className = 'text-decoration-none';
                     telLink.innerHTML = '<i class="fas fa-phone"></i> ' + data.force_telephone;
+                    telLink.title = 'Click to call';
                     linksEl.appendChild(telLink);
                 }
             }
